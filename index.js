@@ -38,8 +38,8 @@ function sumCards(item) {
 function renderGame () {
     cards.forEach(sumCards)
     message = sum <= 20 ? "Do you want to draw a new card?" : sum === 21 ? "Wohoo! You've got Blackjack!" : "You're out of the game!"
-    hasBlackjack = sum === 21 ? true : false
-    isAlive = sum > 21 ? false : true
+    hasBlackjack = sum === 21
+    isAlive = sum < 21
     messageEl.textContent = message
     cardsEl.textContent = "Cards: "
     for (let i = 0; i<cards.length; i++) {
