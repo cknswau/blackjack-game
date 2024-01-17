@@ -1,4 +1,4 @@
-<html>
+    <html>
     <head>
         <link rel="stylesheet" href="index.css">
     </head>
@@ -8,8 +8,10 @@
             <p id="message-el">Want to play a round?</p>
             <p id="cards-el">Cards:</p>
             <p id="sum-el">Sum:</p>
-            <button onclick="startGame()">START GAME</button>
-            <button onclick="newCard()">NEW CARD</button>
+            <div>
+                <button onclick="startGame()" id="startGame">START GAME</button>
+                <button onclick="newCard()" id="newCard">HIT</button>
+            </div>
             <p id="player-el"></p>
         </div>
         <script src="index.js"></script>
