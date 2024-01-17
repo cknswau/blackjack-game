@@ -16,8 +16,8 @@ let playerEl = document.getElementById("player-el")
 playerEl.textContent = player.name + ": $" + player.chips
 
 function startGame() {
-    hasBlackjack = false
-    isAlive = true
+    !hasBlackjack
+    isAlive
     player["chips"] = 495
     sum = 0
     cards.length = 0;
@@ -37,8 +37,11 @@ function sumCards(item) {
 
 function renderGame () {
     cards.forEach(sumCards)
-    message = sum <= 20 ? "Do you want to draw a new card?" : sum === 21 ? "Wohoo! You've got Blackjack!" : "You're out of the game!"
-    hasBlackjack = sum === 21
+    message = sum <= 20 ? "Do you want to draw a new card?" : 
+        sum === 21 && cards.length === 2 ? "Wohoo! You've got Blackjack!" : 
+        sum === 21 && cards.length !== 2 ? "You have 21!" 
+        : "You're out of the game!"
+    hasBlackjack = sum === 21 && cards.length === 2
     isAlive = sum < 21
     messageEl.textContent = message
     cardsEl.textContent = "Cards: "
