@@ -50,7 +50,7 @@ function renderGame () {
 }
 
 function newCard() {
-    if ( isAlive === true && hasBlackjack === false ) {
+    if ( isAlive && !hasBlackjack ) {
         sum = 0
         cards.push(getRandomCard())
         renderGame()
