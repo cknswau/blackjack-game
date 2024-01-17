@@ -28,13 +28,7 @@ function startGame() {
 
 function getRandomCard() {
     let num = Math.floor(Math.random() * 13) + 1
-    if ( num === 1 ) {
-        return 11
-    } else if ( num > 11 ) {
-        return 10
-    } else { 
-        return num
-    }
+    return num = num === 1 ? 11 : num > 11 ? 10 : num
 }
 
 function sumCards(item) {
@@ -43,15 +37,9 @@ function sumCards(item) {
 
 function renderGame () {
     cards.forEach(sumCards)
-    if ( sum <= 20 ) {
-        message = "Do you want to draw a new card?"
-    } else if ( sum === 21 ) {
-        message = "Wohoo! You've got Blackjack!"
-        hasBlackjack = true
-    } else {
-        message = "You're out of the game!"
-        isAlive = false
-    }
+    message = sum <= 20 ? "Do you want to draw a new card?" : sum === 21 ? "Wohoo! You've got Blackjack!" : "You're out of the game!"
+    hasBlackjack = sum === 21 ? true : false
+    isAlive = sum > 21 ? false : true
     messageEl.textContent = message
     cardsEl.textContent = "Cards: "
     for (let i = 0; i<cards.length; i++) {
