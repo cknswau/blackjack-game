@@ -12,4 +12,4 @@ there are a few changes i want to make, but i'll do that later
 17/1/24: made it so when a game is started, the start game button is hidden, and the new card button is shown. (above #2)<br>
 17/1/24: changed new card button to hit, to get ready for stand button and dealer (above #3)<br>
 17/1/24: cleaned alot of code and rewrote heaps<br>
-18/1/24: added chip count to localStorage, need to reset when 0, will do that later<br>
+18/1/24: added chip count to localStorage, need to reset when 0, will keep track now of chip count, will do that later<br>
