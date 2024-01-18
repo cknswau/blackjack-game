@@ -1,36 +1,21 @@
-let player = {
-    chips: 500
-}
 let hasBlackjack = false
 let isAlive = false
 let message = ""
 let sum = 0
-let total = ""
 let cards = []
-let messageEl = document.querySelector("#message-el")
-let cardsEl = document.querySelector("#cards-el")
-let sumEl = document.querySelector("#sum-el")
-let playerEl = document.getElementById("player-el")
-let btnStartGame = document.getElementById("startGame")
-let btnNewCard = document.getElementById("newCard")
+myChips = localStorage.getItem("myChipCount") ? localStorage.getItem("myChipCount") : localStorage.setItem("myChipCount", 500)
+chips = myChips || 500
+const messageEl = document.querySelector("#message-el")
+const cardsEl = document.querySelector("#cards-el")
+const sumEl = document.querySelector("#sum-el")
+const playerEl = document.getElementById("player-el")
+const btnStartGame = document.getElementById("startGame")
+const btnNewCard = document.getElementById("newCard")
 
-playerEl.textContent = `Chips: ${player.chips}`
+playerEl.textContent = `Chips: $${chips}`
 btnNewCard.style.display = "none"
 sumEl.style.display = "none"
 cardsEl.style.display = "none"
-
-function startGame() {
-    !hasBlackjack
-    isAlive
-    player["chips"] = 495
-    sum = 0
-    cards.length = 0;
-    cards.push(getRandomCard())
-    cards.push(getRandomCard())
-    renderGame()
-    sumEl.style.display = "block"
-    cardsEl.style.display = "block"
-}
 
 function getRandomCard() {
     let num = Math.floor(Math.random() * 13) + 1
@@ -55,15 +40,37 @@ function renderGame () {
         cardsEl.textContent += " : " + cards[i]
     }
 
+    if ( hasBlackjack ) {
+        chips += 15
+        localStorage.setItem("myChipCount", chips)
+        playerEl.textContent = `Chips: $${chips}`
+    }
+
     sumEl.textContent = "Sum: " + sum
     isAlive ? btnStartGame.style.display = "none" : btnStartGame.style.display = "block"
     !isAlive ? btnNewCard.style.display = "none" : btnNewCard.style.display = "block"
 }
 
-function newCard() {
+btnStartGame.addEventListener("click", function () {
+    !hasBlackjack
+    isAlive
+    chips -= 5
+    localStorage.setItem("myChipCount", chips)
+    sum = 0
+    cards.length = 0;
+    cards.push(getRandomCard())
+    cards.push(getRandomCard())
+    renderGame()
+    sumEl.style.display = "block"
+    cardsEl.style.display = "block"
+    playerEl.textContent = `Chips: $${chips}`
+})
+
+
+btnNewCard.addEventListener("click", function () {
     if ( isAlive && !hasBlackjack ) {
         sum = 0
         cards.push(getRandomCard())
         renderGame()
     }
-}
+})
