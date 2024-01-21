@@ -22,9 +22,7 @@ function getRandomCard() {
     return num = num === 1 ? 11 : num > 11 ? 10 : num
 }
 
-function sumCards(item) {
-    sum += item
-}
+sumCards = (item) => sum += item
 
 function renderGame () {
     cards.forEach(sumCards)
